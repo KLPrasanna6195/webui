@@ -40,7 +40,7 @@ then run the server and check any errors or there.
 
 Open settings file in Project and mention app name and rest_framework in Installed apps and made changes in databases according to our database user, name and password.
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'XXXXXX',
@@ -49,27 +49,31 @@ DATABASES = {
         'HOST':'127.0.0.1',
         'PORT':'5432',
     }
-}
+}'''
 
 In this project we are using static files so, we need to write below lines in settings.py file:
-  STATIC_URL = '/static/'
+  
+  '''STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     (os.path.join(BASE_DIR, 'static')),
 ]
 STATIC_ROOT = (os.path.join(BASE_DIR, "staticfiles"))
+'''
 In project folder urls.py, make below changes:
-from django.conf.urls import url,include
+
+
+'''from django.conf.urls import url,include
 
   urlpatterns = [
     url('', include('search.urls')),
 ]
-
+'''
 Create urls.py in application folder:
 
 Do, required changes in Models.py, urls.py and views.py
-Models.py:
+**Models.py:**
 
-from django.db import models
+'''from django.db import models
 
 # Create your models here.
 class searchModel(models.Model):
@@ -80,11 +84,12 @@ class searchModel(models.Model):
         return self.name
 
     class Meta:
-        db_table = "assesment"
+        db_table = "assesment"'''
+        
+**
+views.py:**
 
-views.py:
-
-from rest_framework.decorators import api_view
+'''from rest_framework.decorators import api_view
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
@@ -103,22 +108,23 @@ def get_queryset(request):
             else:
                 return Response(match[:21], status=status.HTTP_200_OK)
         else:
-            return render(request, 'search.html')
+            return render(request, 'search.html')'''
 
-urls.py:
+**urls.py:**
 
-from django.conf.urls import url
+'''from django.conf.urls import url
 from . import views
 
 urlpatterns=[
     url('search/',views.get_queryset),
 
-]
+]'''
+
  Create a folder templates and create search.html file:
  use below code in search.html
-  search.html:
+ ** search.html:**
   
-<form method="GET" action="get_queryset">
+'''<form method="GET" action="get_queryset">
         {% csrf_token %}
         <div class="form- group">
             <div class="col- lg-5">
@@ -129,7 +135,13 @@ urlpatterns=[
             </label>
         </div>
 
-</form>
+</form>'''
+
+In postgres database copy python_assesment(2).csv file into a empty table.
+
+run below line of code in psql prompt.
+
+\COPY assesment(id,name) FROM 'C:\path\to\csv\file\python-assesment (1).csv' DELIMITER ',' CSV HEADER;
 
 
 Running:
