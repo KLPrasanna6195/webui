@@ -14,7 +14,9 @@ Installation Creating the environment
 Create a virtual python environment for the project. If you're not using virtualenv or virtualenvwrapper you may skip this step.
 
 For virtualenvwrapper
+
 open cmd and follow these steps:
+
 pip install virtualenv/wrapper - win
 
 mkvirtualenv {{ Env name }}
@@ -28,6 +30,7 @@ pip install django
 mkdir <some name>  #for django projects
 
 cd {{ directory name which is given above }}
+
  According to current project :
  
  django-admin startproject webui
@@ -71,6 +74,7 @@ In project folder urls.py, make below changes:
 Create urls.py in application folder:
 
 Do, required changes in Models.py, urls.py and views.py
+
 **Models.py:**
 
 '''from django.db import models
@@ -121,7 +125,9 @@ urlpatterns=[
 ]'''
 
  Create a folder templates and create search.html file:
+ 
  use below code in search.html
+ 
  ** search.html:**
   
 '''<form method="GET" action="get_queryset">
@@ -145,21 +151,36 @@ run below line of code in psql prompt.
 
 
 Run the following commands in cmd:
+
 python manage.py makemigrations
+
 python manage.py migrate
+
 python manage.py runserver
 
 Open browser to http://127.0.0.1:8000
+
 open  http://127.0.0.1:8000/search/  search and word and get output.
 
 
 Steps for installation and running the code:
+
 1) webui (zip file)  is a django project. One need to install and unzip it.
+
 2) place it in a folder and load the csv file(python_assesment(2).csv) into database. In this project i am using postgres database. 
+
 3) Change user, name and password in the settings.py file in webui with your name, user and postgres database password.
+
 4) open cmd and specify the folder path and run the django server.
-5) steps to run django server, python manage.py makemigrations---> python manage.py migrate ----> python manage.py runserver then the server starts running at the http://127.0.0.1:8000/.
-6) http://127.0.0.1:8000/search/ is the url for webui. Go to this url.
-7) In the search button enter a word to search or mention it in a url parameter as ?NAME='<some word>'
-8) click search button
-9) page will be redirected to django rest framework will results if any else we will get no results as output.
+
+5) steps to run django server, python manage.py makemigrations---> python manage.py migrate ----> python manage.py runserver then the server starts running at the 
+
+6) http://127.0.0.1:8000/.
+
+7) http://127.0.0.1:8000/search/ is the url for webui. Go to this url.
+
+8) In the search button enter a word to search or mention it in a url parameter as ?NAME='<some word>'
+
+9) click search button
+
+10) page will be redirected to django rest framework will results if any else we will get no results as output.
