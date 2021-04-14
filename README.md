@@ -144,29 +144,13 @@ run below line of code in psql prompt.
 \COPY assesment(id,name) FROM 'C:\path\to\csv\file\python-assesment (1).csv' DELIMITER ',' CSV HEADER;
 
 
-Running:
-
+Run the following commands in cmd:
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 
 Open browser to http://127.0.0.1:8000
-
-Create models as follows based on your requirements:
-
-from django.db import models
-
-Create your models here.
-class users(models.Model): id = models.IntegerField(primary_key=True); real_name = models.CharField(max_length=100); tz = models.CharField(max_length=100); activity_periods = models.TimeField(auto_now=True); start_time = models.DateTimeField(); End_time = models.DateTimeField();
-
-Do, required changes in admin.py and if you are using static files which are html and css files create a template folder in a project and add template directory in settings. After the changes run the following commands:
-
-Python manage.py makemigrations
-
-Python manage.py migrate
-
-Create Super_user in cmd by using particular commands such as
-
-Python manage.py create superuser Fill the required details and your account is created successfully.
-
+open  http://127.0.0.1:8000/search/  search and word and get output.
 
 
 Steps for installation and running the code:
